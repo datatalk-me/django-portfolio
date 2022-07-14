@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">My code</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="{% url 'home' %}">home</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span>Code</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+<body>
+    <div class="w3l-searchblock w3l-homeblock1 py-5">
+        <div class="container">
+            <h3 class="section-title-left">Github Repos</h3>
+            <hr>
+        </div>
+        
+            
+     <div class="container">
+        {% for repo in repos %}
+        <div class="d-flex text-muted pt-3">
+            
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="d-flex justify-content-between">
+               <h3> <strong class="text-gray-dark">{{ repo.title }}</strong></h3>
+                
+                <a href="{{ repo.git_url }}" target="_blank">
+                    <button class="btn btn-primary">
+                        <i class="fa fa-github" aria-hidden="true"></i>
+                        Github
+                    </button>
+                </a>
+                
+              </div>
+              <span class="d-block">{{repo.description | safe }}</span>
+            </div>
+          </div>
+        
+        {% endfor %}
+    </div>
+         <!-- pagination -->
+    
+            <!-- pagination -->
+            <hr>
+            {% if repos.has_other_pages %}
+            <div class="pagination-wrapper mt-5">
+                <ul class="pagination justify-content-center">
+                    {% if repos.has_previous %}
+                    <li class="page-item ">
+                        <a class="page-link" href="?page={{repos.previous_page_number}}">Previous</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" >Previous</a>
+                    </li>
+                    {% endif %}
+                    {% for number in repos.paginator.page_range %}
+                       {% if repos.paginator.number == number %}
+                        <li class="page-item active">
+                            <a class="page-link" href="{{number}}">{{number}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{number}}">{{number}}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if repos.has_next %}
+                   
+                    <li class="page-item"><a class="page-link" href="?page={{repos.next_page_number}}">Next</a></li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+         <!-- //pagination -->
+     </div>
+
+</body>
+
+
+{% endblock %}

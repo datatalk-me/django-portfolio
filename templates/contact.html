@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- contact breadcrumb -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">Contact Me</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="#url">Home</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Contact </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- contact breadcrumb -->
+
+<!-- contact block -->
+<!-- contact1 -->
+<section class="w3l-contact-1 py-5">
+    <div class="contacts-9 py-lg-5 py-md-4">
+        <div class="container">
+            <div class="d-grid contact-view">
+                <div class="cont-details">
+                    {% for adres in adress %}
+                    <div class="cont-top">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-phone text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Call Me</h6>
+                            <p><a href="tel:+44 99 555 42">{{ adres.phone}}</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-envelope-o text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Email Me</h6>
+                            <p><a href="mailto:example@mail.com" class="mail">{{adres.email}}</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-map-marker text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <h6>Location</h6>
+                            <p>{{adres.address}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="map-content-9">
+                    {% include 'messages.html' %}
+                    <form method="POST" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="twice-two">
+                            <input name="name"  class="form-control" name="w3lName" id="w3lName" placeholder="Name"
+                                required="">
+                            <input name="email" type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Email"
+                                required="">
+                        </div>
+                        <div class="twice">
+                            <input name="subject" class="form-control" name="w3lSubject" id="w3lSubject"
+                                placeholder="Subject" required="">
+                        </div>
+                        <textarea name="message" class="form-control" id="w3lMessage" placeholder="Message"
+                            required=""></textarea>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary btn-style mt-4">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /contact1 -->
+<div class="map-iframe">
+    <!-- <iframe
+        
+        width="100%" height="400" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe> -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d797.3883474579517!2d78.50341682916266!3d15.128871136162944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe35725ccf8c6174e!2zMTXCsDA3JzQzLjkiTiA3OMKwMzAnMTQuMyJF!5e1!3m2!1sen!2sin!4v1657731034790!5m2!1sen!2sin" width="1500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<!-- //contact block -->
+
+
+{% endblock %}

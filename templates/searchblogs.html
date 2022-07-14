@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">search</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Blogs </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<br>
+<div class="container">
+    <form action="{% url 'searchblogs' %}" method="get" class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input name="search" type="text" class="form-control" placeholder="Search for any category or blogs...">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+            </div>
+        </div>
+    </form>
+<div class="w3l-searchblock w3l-homeblock1 py-5">
+    <div class="container py-lg-4 py-md-3">
+        <!-- block -->
+        <div class="row">
+            <div class="col-lg-8 most-recent">
+                <h3 class="section-title-left">My Blogs</h3>
+                <br>
+                <div class="row">
+                    {% for blog in blogs %}
+                    <div class="col-lg-6 col-md-6 item mt-5 pt-lg-3">
+                        <div class="card">
+                            <a href="{% url 'blog_detail' blog.slug %}" class="href"><img src="{{ blog.image.url }}" class="card-img-top" alt="..."></a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ blog.title }}</h5>
+                                <p class="card-text">{{ blog.snippet | slice:":100" | safe }}</p>
+                                
+                                <div class="author align-items-center mt-3 mb-1">
+                                    <a href="#author">{{ blog.author }}</a> in <a href="#url">{{ blog.category }}</a>
+                                </div>
+                                <ul class="blog-meta">
+                                    <li class="meta-item blog-lesson">
+                                        <span class="meta-value">{{ blog.created_at|date:'b d, Y' }} </span>
+                                    </li>
+                                    <li class="meta-item blog-students">
+                                        <span class="meta-value"> {{ blog.time_to_read}} to read</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+                    
+                </body>
+                </html>
+               
+            </div>
+    <div class="col-lg-4 trending mt-lg-0 mt-5 mb-lg-5">
+        <div class="pos-sticky">
+            <h3 class="section-title-left">Trending </h3>
+            <br>
+            <hr>
+            {% for trending_blog in trending_blogs %}
+
+            <div class="grids5-info">
+                <a href="{% url 'blog_detail' trending_blog.id %}" class="href"><h4>{{ trending_blog.title }}</h4></a>
+                <div class="blog-info">
+                    <a href=""><p class="card-text"><small>{{ trending_blog.snippet | slice:":100" | safe }}</small></p></a>
+                    </a>
+                    <div class="author align-items-center mt-2 mb-1">
+                        <a href="#author">{{ trending_blog.author }}</a> in <a href="#url">{{ trending_blog.category }}</a>
+                    </div>
+                    <ul class="blog-meta">
+                        <li class="meta-item blog-lesson">
+                            <span class="meta-value"> {{ trending_blog.created_at|date:'b d, Y' }}</span>
+                        </li>
+                        <li class="meta-item blog-students">
+                            <span class="meta-value"> {{ trending_blog.time_to_read}} to read</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+           {% endfor %}
+        </div>
+    </div>
+        </div>
+        <!-- //block-->
+
+       
+    </div>
+</div>
+
+
+</body>
+{% endblock %}
