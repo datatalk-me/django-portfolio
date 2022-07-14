@@ -80,17 +80,26 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'Portfolio',
+#         'USER': 'root',
+#         'PASSWORD': 'Sandeep@001',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Portfolio',
-        'USER': 'root',
-        'PASSWORD': 'Sandeep@001',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'd97cvrrrq70se3',
+       'USER': 'yukakkfiruyeue',
+       'PASSWORD': 'cd44b1f658becdf4ce30a69e83abbf9c075c73f1fc9b4e72cd035dddcb8b63c9',
+       'HOST': 'ec2-3-219-229-143.compute-1.amazonaws.com',
+       'PORT': '5432',
+   }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
