@@ -4,6 +4,8 @@
 
 This is a django portpofilo webapp with blog and project pages.
 
+you can find myapp here:https://sandeeprayudu.herokuapp.com
+
 Some sample pages of website
 
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/1.png)
@@ -35,7 +37,7 @@ contact page
 
 
 
-you can find myapp here:https://sandeeprayudu.herokuapp.com
+
 
 
 
