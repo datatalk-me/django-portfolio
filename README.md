@@ -12,18 +12,26 @@ About page
 
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/2.png)
 
-Blogs Page
 
+you can subscrible to get latestupdates.
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/3.png)
 
-Github repos
+Blogs Page
+
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/4.png)
 
-projects page
+Github repos
+
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/5.png)
 
-contact page
+projects page
+
 ![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/6.png)
+
+contact page
+![alt text](https://github.com/datatalk-me/django-portfolio/blob/main/images/7.png)
+
+
 
 
 
